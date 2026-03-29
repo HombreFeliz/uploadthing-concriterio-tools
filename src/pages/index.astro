@@ -1,0 +1,56 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { DemoApp } from "../components/DemoApp";
+import Banners from "../components/Banners.astro";
+import StackSection from "../components/StackSection.astro";
+import { extractRouterConfig } from "uploadthing/server";
+import { uploadRouter } from "../server/uploadthing";
+
+const routerConfig = extractRouterConfig(uploadRouter);
+(globalThis as any).__UPLOADTHING ??= routerConfig;
+---
+
+<Layout title="UploadThing — concriterio.tools">
+  <script define:vars={{ routerConfig }} is:inline>
+    globalThis.__UPLOADTHING ??= routerConfig;
+  </script>
+
+  <header class="mb-12">
+    <h1 class="font-[var(--font-display)] text-[2.5rem] leading-[3rem] font-bold">
+      UploadThing
+    </h1>
+    <p class="mt-2 text-[var(--color-text-muted)] text-lg">
+      Uploads tipados para aplicaciones TypeScript. Sin S3, sin configuración manual.
+    </p>
+  </header>
+
+  <section class="mb-12 space-y-4">
+    <p>
+      UploadThing abstrae la complejidad de subir archivos a la nube detrás de
+      un sistema de <strong>File Routes tipadas</strong>. Defines qué archivos
+      aceptas, qué validación aplicas, y qué pasa cuando el upload termina. El
+      SDK se encarga del resto: presigned URLs, almacenamiento y CDN.
+    </p>
+    <p>
+      La arquitectura separa responsabilidades: la autenticación y validación
+      ocurren en tu servidor, el almacenamiento lo gestiona UploadThing. Tu
+      servidor nunca procesa el archivo — solo firma y autoriza.
+    </p>
+    <p class="text-[var(--color-text-muted)] text-[0.875rem]">
+      Esta demo te permite probar el flujo completo: selecciona un preset,
+      arrastra un archivo y observa cómo se sube al CDN de UploadThing.
+    </p>
+  </section>
+
+  <section class="mb-12">
+    <DemoApp client:load />
+  </section>
+
+  <section class="mb-12">
+    <StackSection />
+  </section>
+
+  <section>
+    <Banners />
+  </section>
+</Layout>

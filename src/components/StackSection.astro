@@ -1,0 +1,48 @@
+---
+const stack = [
+  {
+    name: "Astro 5",
+    description: "Framework base con SSR. Renderiza HTML estático y solo hidrata los componentes React interactivos.",
+  },
+  {
+    name: "React 19",
+    description: "Islands para los componentes interactivos: uploader, galería y configurador.",
+  },
+  {
+    name: "UploadThing",
+    description: "SDK de uploads tipado. File Routes en el servidor, hooks en el cliente, CDN incluido.",
+  },
+  {
+    name: "Tailwind CSS 4",
+    description: "Utilidades CSS vía plugin Vite. Zero config, dark mode nativo.",
+  },
+  {
+    name: "Vercel",
+    description: "Deploy con adapter oficial de Astro. SSR en edge functions.",
+  },
+  {
+    name: "TypeScript",
+    description: "Tipado end-to-end desde el File Router del servidor hasta los componentes del cliente.",
+  },
+];
+---
+
+<section class="space-y-6">
+  <h2 class="font-[var(--font-display)] text-[1.75rem] leading-[2.25rem] font-semibold">
+    Stack
+  </h2>
+  <div class="grid gap-3">
+    {stack.map((item) => (
+      <div class="flex items-start gap-4 rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] p-4">
+        <div>
+          <p class="font-[var(--font-mono)] text-sm font-bold text-[var(--color-primary)]">
+            {item.name}
+          </p>
+          <p class="mt-1 text-[0.875rem] leading-[1.25rem] text-[var(--color-text-muted)]">
+            {item.description}
+          </p>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>

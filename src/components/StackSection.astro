@@ -27,21 +27,17 @@ const stack = [
 ];
 ---
 
-<section class="space-y-6">
-  <h2 class="font-[var(--font-display)] text-[1.75rem] leading-[2.25rem] font-semibold">
-    Stack
-  </h2>
-  <div class="grid gap-3">
+<section class="space-y-4">
+  <h2 class="text-xl font-semibold tracking-tight">Stack</h2>
+  <div class="overflow-hidden rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] divide-y divide-[var(--color-border)]">
     {stack.map((item) => (
-      <div class="flex items-start gap-4 rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] p-4">
-        <div>
-          <p class="font-[var(--font-mono)] text-sm font-bold text-[var(--color-primary)]">
-            {item.name}
-          </p>
-          <p class="mt-1 text-[0.875rem] leading-[1.25rem] text-[var(--color-text-muted)]">
-            {item.description}
-          </p>
-        </div>
+      <div class="flex items-baseline gap-4 px-4 py-3">
+        <p class="shrink-0 font-[var(--font-mono)] text-[13px] font-medium text-[var(--color-primary)]">
+          {item.name}
+        </p>
+        <p class="text-sm text-[var(--color-text-muted)]">
+          {item.description}
+        </p>
       </div>
     ))}
   </div>

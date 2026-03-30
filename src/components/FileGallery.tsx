@@ -38,10 +38,14 @@ function CopyButton({ url }: { url: string }) {
   return (
     <button
       onClick={handleCopy}
-      className="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors duration-150 cursor-pointer"
+      className="rounded-md p-1.5 text-[var(--color-text-muted)] transition-colors duration-150 hover:bg-[var(--color-surface-alt)] hover:text-[var(--color-primary)] cursor-pointer"
       title="Copiar URL"
     >
-      {copied ? <Check className="size-4 text-[var(--color-success)]" /> : <Copy className="size-4" />}
+      {copied ? (
+        <Check className="size-4 text-[var(--color-success)]" />
+      ) : (
+        <Copy className="size-4" />
+      )}
     </button>
   );
 }
@@ -51,37 +55,38 @@ export function FileGallery({ files }: FileGalleryProps) {
 
   return (
     <div className="space-y-4">
-      <h2 className="font-[var(--font-display)] text-[1.75rem] leading-[2.25rem] font-semibold">
+      <h2 className="text-xl font-semibold tracking-tight">
         Archivos subidos
       </h2>
 
-      <div className="grid gap-3">
+      <div className="divide-y divide-[var(--color-border)] overflow-hidden rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)]">
         {files.map((file, i) => (
           <div
             key={`${file.url}-${i}`}
-            className="flex items-center gap-4 rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] p-4"
+            className="flex items-center gap-4 p-3 transition-colors hover:bg-[var(--color-surface-alt)]"
           >
             {file.type.startsWith("image/") ? (
               <img
                 src={file.url}
                 alt={file.name}
-                className="size-16 rounded object-cover"
+                className="size-12 rounded-md border border-[var(--color-border)] object-cover"
               />
             ) : (
-              <div className="flex size-16 items-center justify-center rounded bg-[var(--color-surface-alt)]">
+              <div className="flex size-12 items-center justify-center rounded-md border border-[var(--color-border)] bg-[var(--color-surface-alt)]">
                 <FileIcon type={file.type} />
               </div>
             )}
 
             <div className="min-w-0 flex-1">
-              <p className="truncate font-medium text-[var(--color-text)]">
+              <p className="truncate text-sm font-medium text-[var(--color-text)]">
                 {file.name}
               </p>
-              <div className="flex gap-3 mt-1">
-                <span className="font-[var(--font-mono)] text-[0.75rem] text-[var(--color-text-muted)]">
+              <div className="mt-0.5 flex items-center gap-2">
+                <span className="font-[var(--font-mono)] text-[11px] text-[var(--color-text-muted)]">
                   {file.type}
                 </span>
-                <span className="font-[var(--font-mono)] text-[0.75rem] text-[var(--color-text-muted)]">
+                <span className="text-[var(--color-border)]">&middot;</span>
+                <span className="font-[var(--font-mono)] text-[11px] text-[var(--color-text-muted)]">
                   {formatSize(file.size)}
                 </span>
               </div>

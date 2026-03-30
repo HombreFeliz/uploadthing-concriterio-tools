@@ -31,10 +31,10 @@ export function RouteConfigurator({
 }: RouteConfiguratorProps) {
   return (
     <div className="space-y-4">
-      <h2 className="font-[var(--font-display)] text-[1.75rem] leading-[2.25rem] font-semibold">
+      <h2 className="text-xl font-semibold tracking-tight">
         Configurador de File Routes
       </h2>
-      <p className="text-[var(--color-text-muted)] text-[0.875rem] leading-[1.25rem]">
+      <p className="text-sm text-[var(--color-text-muted)]">
         Selecciona un preset para cambiar las restricciones del uploader en
         tiempo real.
       </p>
@@ -46,10 +46,10 @@ export function RouteConfigurator({
             <button
               key={preset.key}
               onClick={() => onEndpointChange(preset.key)}
-              className={`rounded-lg border px-4 py-2 text-sm font-medium transition-all duration-150 cursor-pointer ${
+              className={`rounded-md border px-4 py-2 text-sm font-medium transition-all duration-150 cursor-pointer ${
                 isActive
-                  ? "border-[var(--color-primary)] bg-[var(--color-primary)]/10 text-[var(--color-primary)]"
-                  : "border-[var(--color-border)] bg-transparent text-[var(--color-text-muted)] hover:border-[var(--color-text-muted)]"
+                  ? "border-[var(--color-primary)] bg-[var(--color-primary-muted)] text-[var(--color-primary)]"
+                  : "border-[var(--color-border)] bg-transparent text-[var(--color-text-muted)] hover:text-[var(--color-text-secondary)] hover:border-[var(--color-text-muted)]"
               }`}
             >
               {preset.label}
@@ -58,7 +58,7 @@ export function RouteConfigurator({
         })}
       </div>
 
-      <p className="font-[var(--font-mono)] text-[0.75rem] leading-[1rem] text-[var(--color-text-muted)]">
+      <p className="font-[var(--font-mono)] text-xs text-[var(--color-text-muted)]">
         {presets.find((p) => p.key === activeEndpoint)?.description}
       </p>
     </div>

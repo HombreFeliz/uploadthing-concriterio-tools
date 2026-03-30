@@ -1,22 +1,23 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #7665FF;
-  --color-primary-hover: #8B7CFF;
-  --color-bg: #0a0a0a;
-  --color-surface: #111111;
-  --color-surface-alt: #1a1a1a;
-  --color-border: #1e1e1e;
-  --color-border-active: #7665FF33;
-  --color-text: #e2e2e2;
-  --color-text-muted: #666666;
-  --color-success: #4ade80;
-  --color-error: #f87171;
-  --color-warning: #fbbf24;
+  --color-primary: #E1503E;
+  --color-primary-hover: #E96B5A;
+  --color-primary-muted: #E1503E1A;
+  --color-bg: #09090B;
+  --color-surface: #18181B;
+  --color-surface-alt: #1C1C20;
+  --color-border: #27272A;
+  --color-border-active: #E1503E44;
+  --color-text: #FAFAFA;
+  --color-text-secondary: #A1A1AA;
+  --color-text-muted: #71717A;
+  --color-success: #22C55E;
+  --color-error: #EF4444;
+  --color-warning: #F59E0B;
 
-  --font-display: "Fraunces", serif;
-  --font-body: "Outfit", sans-serif;
-  --font-mono: "Space Mono", monospace;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", monospace;
 }
 
 body {
@@ -25,10 +26,4 @@ body {
   color: var(--color-text);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-h1,
-h2,
-h3 {
-  font-family: var(--font-display);
 }

@@ -85,24 +85,31 @@ export function UploadZone({ endpoint, onUploadComplete }: UploadZoneProps) {
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
         onDrop={handleDrop}
-        className={`flex flex-col items-center justify-center gap-4 rounded-xl border-2 border-dashed p-12 transition-all duration-150 ${
+        className={`relative flex flex-col items-center justify-center gap-3 rounded-lg border-2 border-dashed p-12 transition-all duration-200 ${
           isDragging
-            ? "border-solid border-[var(--color-primary)] bg-[var(--color-primary)]/5"
-            : "border-[var(--color-border)] bg-[var(--color-surface-alt)] hover:border-[var(--color-primary)]"
+            ? "border-[var(--color-primary)] bg-[var(--color-primary-muted)]"
+            : "border-[var(--color-border)] bg-[var(--color-surface)] hover:border-[var(--color-text-muted)] hover:bg-[var(--color-surface-alt)]"
         } ${isUploading ? "pointer-events-none opacity-60" : "cursor-pointer"}`}
       >
-        <Upload
-          className={`size-12 transition-colors duration-150 ${
+        <div
+          className={`flex size-12 items-center justify-center rounded-full transition-colors duration-200 ${
             isDragging
-              ? "text-[var(--color-primary)]"
-              : "text-[var(--color-text-muted)]"
+              ? "bg-[var(--color-primary-muted)] text-[var(--color-primary)]"
+              : "bg-[var(--color-surface-alt)] text-[var(--color-text-muted)]"
           }`}
-        />
-        <p className="text-center text-[var(--color-text-muted)]">
-          {isUploading
-            ? "Subiendo..."
-            : "Arrastra archivos aquí o haz clic para seleccionar"}
-        </p>
+        >
+          <Upload className="size-6" />
+        </div>
+        <div className="text-center">
+          <p className="text-sm font-medium text-[var(--color-text)]">
+            {isUploading
+              ? "Subiendo..."
+              : "Arrastra archivos aquí o haz clic para seleccionar"}
+          </p>
+          <p className="mt-1 text-xs text-[var(--color-text-muted)]">
+            Los archivos se suben directamente al CDN de UploadThing
+          </p>
+        </div>
       </div>
 
       <input
@@ -114,22 +121,27 @@ export function UploadZone({ endpoint, onUploadComplete }: UploadZoneProps) {
       />
 
       {isUploading && (
-        <div className="h-1 w-full overflow-hidden rounded-full bg-[var(--color-border)]">
-          <div
-            className="h-full rounded-full transition-all duration-200 ease-out"
-            style={{
-              width: `${progress}%`,
-              backgroundColor:
-                progress === 100
-                  ? "var(--color-success)"
-                  : "var(--color-primary)",
-            }}
-          />
+        <div className="space-y-1.5">
+          <div className="h-1.5 w-full overflow-hidden rounded-full bg-[var(--color-border)]">
+            <div
+              className="h-full rounded-full transition-all duration-200 ease-out"
+              style={{
+                width: `${progress}%`,
+                backgroundColor:
+                  progress === 100
+                    ? "var(--color-success)"
+                    : "var(--color-primary)",
+              }}
+            />
+          </div>
+          <p className="font-[var(--font-mono)] text-xs text-[var(--color-text-muted)]">
+            {progress}%
+          </p>
         </div>
       )}
 
       {error && (
-        <div className="flex items-center gap-2 text-[0.875rem] text-[var(--color-error)]">
+        <div className="flex items-center gap-2 rounded-md border border-[var(--color-error)]/20 bg-[var(--color-error)]/5 px-3 py-2 text-sm text-[var(--color-error)]">
           <AlertCircle className="size-4 shrink-0" />
           <span>{error}</span>
         </div>

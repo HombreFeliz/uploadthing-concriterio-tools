@@ -15,19 +15,22 @@ const routerConfig = extractRouterConfig(uploadRouter);
     globalThis.__UPLOADTHING ??= routerConfig;
   </script>
 
-  <header class="mb-12">
-    <h1 class="font-[var(--font-display)] text-[2.5rem] leading-[3rem] font-bold">
-      UploadThing
-    </h1>
-    <p class="mt-2 text-[var(--color-text-muted)] text-lg">
+  <header class="mb-10">
+    <div class="flex items-center gap-3">
+      <h1 class="text-3xl font-bold tracking-tight">UploadThing</h1>
+      <span class="rounded-full bg-[var(--color-primary-muted)] px-2.5 py-0.5 text-xs font-medium text-[var(--color-primary)]">
+        demo
+      </span>
+    </div>
+    <p class="mt-2 text-[var(--color-text-secondary)]">
       Uploads tipados para aplicaciones TypeScript. Sin S3, sin configuración manual.
     </p>
   </header>
 
-  <section class="mb-12 space-y-4">
+  <section class="mb-10 space-y-3 text-sm leading-relaxed text-[var(--color-text-secondary)]">
     <p>
       UploadThing abstrae la complejidad de subir archivos a la nube detrás de
-      un sistema de <strong>File Routes tipadas</strong>. Defines qué archivos
+      un sistema de <strong class="text-[var(--color-text)] font-medium">File Routes tipadas</strong>. Defines qué archivos
       aceptas, qué validación aplicas, y qué pasa cuando el upload termina. El
       SDK se encarga del resto: presigned URLs, almacenamiento y CDN.
     </p>
@@ -36,17 +39,17 @@ const routerConfig = extractRouterConfig(uploadRouter);
       ocurren en tu servidor, el almacenamiento lo gestiona UploadThing. Tu
       servidor nunca procesa el archivo — solo firma y autoriza.
     </p>
-    <p class="text-[var(--color-text-muted)] text-[0.875rem]">
+    <p class="text-[var(--color-text-muted)] text-xs">
       Esta demo te permite probar el flujo completo: selecciona un preset,
       arrastra un archivo y observa cómo se sube al CDN de UploadThing.
     </p>
   </section>
 
-  <section class="mb-12">
+  <section class="mb-10">
     <DemoApp client:load />
   </section>
 
-  <section class="mb-12">
+  <section class="mb-10">
     <StackSection />
   </section>
 
